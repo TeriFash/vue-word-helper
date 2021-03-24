@@ -1,7 +1,16 @@
 {
-  "name": "vue-cv",
+  "name": "vue-word-helper",
   "version": "0.1.0",
   "private": true,
+  "keywords": [
+    "vue",
+    "vue-router",
+    "vuex",
+    "vue-cli",
+    "bootstrap",
+    "bootstrap-vue",
+    "clipboard2"
+  ],
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
