@@ -2,15 +2,6 @@
   "name": "vue-word-helper",
   "version": "0.1.0",
   "private": true,
-  "keywords": [
-    "vue",
-    "vue-router",
-    "vuex",
-    "vue-cli",
-    "bootstrap",
-    "bootstrap-vue",
-    "clipboard2"
-  ],
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -43,6 +34,15 @@
     "sass-loader": "^8.0.2",
     "vue-template-compiler": "^2.6.11"
   },
+  "keywords": [
+    "vue",
+    "vue-router",
+    "vuex",
+    "vue-cli",
+    "bootstrap",
+    "bootstrap-vue",
+    "clipboard2"
+  ],
   "eslintConfig": {
     "root": true,
     "env": {
