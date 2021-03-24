@@ -7,46 +7,46 @@
 </template>
 
 <script>
-import WordClipboard from "@/components/WordClipboard.vue";
+import WordClipboard from '@/components/WordClipboard.vue'
 
 export default {
-  name: "WordCard",
+  name: 'WordCard',
   components: {
     WordClipboard,
   },
   data() {
-    return {};
+    return {}
   },
   computed: {
     nameDownLine() {
-      return this.textKey;
+      return this.textKey
     },
   },
   methods: {
     setText(val) {
-      const newHeader = this.header ? this.header : `<span>{ name }</span>`;
+      const newHeader = this.header ? this.header : `<span>{ name }</span>`
       const newHeaderFixer = `${newHeader[0].toUpperCase()}${newHeader.slice(
         1
-      )}`;
-      const newText = val.replace(/{ }/i, newHeaderFixer);
-      return `${newText}`;
+      )}`
+      const newText = val.replace(/{ }/i, newHeaderFixer)
+      return `${newText}`
     },
   },
   props: {
     header: {
       type: String,
-      default: "",
+      default: '',
     },
     text: {
       type: String,
-      default: "",
+      default: '',
     },
     textKey: {
       type: Boolean,
       default: true,
     },
   },
-};
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -58,8 +58,10 @@ export default {
 
 .word-card {
   position: relative;
+
   .paragraph {
     padding-bottom: 20px;
+    padding-right: 60px;
   }
 
   &--hr {
@@ -70,7 +72,7 @@ export default {
       width: 100%;
       height: 1px;
       background: rgba(0, 0, 0, 0.1);
-      content: "";
+      content: '';
     }
   }
 }

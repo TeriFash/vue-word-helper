@@ -59,68 +59,85 @@
 </template>
 
 <script>
-import info from "@/data/texts";
-import WordCard from "@/components/WordCard.vue";
+import info from '@/data/texts'
+import WordCard from '@/components/WordCard.vue'
 
 export default {
-  name: "WordContainer",
+  name: 'WordContainer',
   components: {
     WordCard,
   },
   data() {
     return {
       tabIndex: 0,
-      arrItems: ["simple", "accompanying", "rare"],
+      arrItems: ['simple', 'accompanying', 'rare'],
       info: info.sections,
       form: {
-        name: "",
+        name: '',
       },
       show: true,
-    };
+    }
   },
   computed: {
     isTextKey() {
-      const setList = this.info[this.arrItems[this.tabIndex]];
-      const lastKey = setList[setList.length - 1];
-      return setList.lastIndexOf(lastKey);
+      const setList = this.info[this.arrItems[this.tabIndex]]
+      const lastKey = setList[setList.length - 1]
+      return setList.lastIndexOf(lastKey)
     },
     isDataTabs() {
-      const { simple, accompanying, rare } = this.info;
+      const { simple, accompanying, rare } = this.info
 
       const tabs = [
-        { info: simple, title: "Simple questions", active: true },
-        { info: accompanying, title: "Accompanying", active: false },
-        { info: rare, title: "Rare questions", active: false },
-      ];
+        { info: simple, title: 'Simple questions', active: true },
+        { info: accompanying, title: 'Accompanying', active: false },
+        { info: rare, title: 'Rare questions', active: false },
+      ]
 
-      return tabs;
+      return tabs
     },
   },
 
   methods: {
     onSubmit(event) {
-      event.preventDefault();
-      alert(JSON.stringify(this.form));
+      event.preventDefault()
+      alert(JSON.stringify(this.form))
     },
     onReset(event) {
-      event.preventDefault();
+      event.preventDefault()
       // Reset our form values
-      this.form.name = "";
-      this.show = false;
+      this.form.name = ''
+      this.show = false
       this.$nextTick(() => {
-        this.show = true;
-      });
+        this.show = true
+      })
     },
   },
-};
+}
 </script>
 
 <style lang="scss">
 .form-main {
   .input-group {
     min-height: 48px;
+
     .form-control {
       min-height: 48px;
+      transition: all 0.5s ease-in-out;
+      z-index: 4;
+
+      &:focus {
+        border-color: #dc3545;
+        box-shadow: none;
+      }
+
+      &::placeholder {
+        color: #49505775;
+        font-size: 16px;
+      }
+    }
+
+    .input-group-append {
+      z-index: 6;
     }
   }
 }
