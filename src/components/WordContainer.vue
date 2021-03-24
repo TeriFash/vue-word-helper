@@ -59,7 +59,7 @@
 </template>
 
 <script>
-import info from '@/data/texts'
+import info from '@/data'
 import WordCard from '@/components/WordCard.vue'
 
 export default {
