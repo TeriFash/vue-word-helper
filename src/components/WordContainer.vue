@@ -83,7 +83,7 @@ export default {
     ...mapGetters(['getSectionsList']),
     isSectionsData() {
       const list = this.getSectionsList
-      const { simple, accompanying, rare } = list
+      const { simple = [], accompanying = [], rare = [] } = list
       return [
         {
           info: simple,

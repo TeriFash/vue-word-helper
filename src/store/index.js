@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { db } from '../firebase'
+// import { db } from '../firebase'
 
 Vue.use(Vuex)
 
@@ -23,7 +23,7 @@ export default new Vuex.Store({
     async FETCH_SECTIONS ({ commit }) {
       const result = []
       try {
-        await db.collection('sections').get().then((querySnapshot) => {
+        await this._vm.$db.collection('sections').get().then((querySnapshot) => {
           querySnapshot.forEach((doc) => {
             result.push(doc.data())
           })
@@ -38,7 +38,7 @@ export default new Vuex.Store({
       const { collection } = payload
       const result = []
       try {
-        await db.collection(collection).get().then((querySnapshot) => {
+        await this._vm.$db.collection(collection).get().then((querySnapshot) => {
           querySnapshot.forEach((doc) => {
             result.push(doc.data())
           })
