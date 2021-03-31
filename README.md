@@ -4,20 +4,6 @@
 
 🏃 Runs the Project setup <br />
 
-🗃️ Create a directory that contains the file `data/index.js` in `./src` <br />
-And insert this structure into it
-```js script
-  const text = {
-    sections: {
-      simple: [{text: ``}],
-      accompanying: [{text: ``}],
-      rare: [{text: ``}]
-    }
-  }
-
-  export default text
-```
-
 > `yarn serve`
 
 🚚 Runs the app in the development mode. Compiles and hot-reloads <br />

@@ -14,9 +14,6 @@ export default {
   components: {
     WordClipboard,
   },
-  data() {
-    return {}
-  },
   computed: {
     nameDownLine() {
       return this.textKey
@@ -49,30 +46,42 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss">
 .paragraph span {
-  color: rgb(251, 148, 148);
   font-weight: 500;
+  opacity: 0.5;
 }
 
 .word-card {
   position: relative;
+  padding: 20px;
+  transition: all 0.5s ease-in-out;
+
+  &:nth-child(odd) {
+    background-color: rgba(0, 123, 255, 0.05);
+  }
+
+  &:first-child {
+    margin-top: 20px;
+  }
+
+  &:hover {
+    &:nth-child(odd) {
+      background-color: rgba(0, 123, 255, 0.09);
+    }
+
+    background-color: rgba(112, 112, 112, 0.09);
+  }
 
   .paragraph {
-    padding-bottom: 20px;
     padding-right: 60px;
   }
 
   &--hr {
-    &::after {
-      // margin-top: 1rem;
-      margin-bottom: 20px;
-      display: block;
-      width: 100%;
-      height: 1px;
-      background: rgba(0, 0, 0, 0.1);
-      content: '';
+
+    &:nth-child(odd) {
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     }
   }
 }

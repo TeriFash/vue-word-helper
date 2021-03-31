@@ -37,7 +37,8 @@
         v-model="tabIndex"
       >
         <b-tab
-          v-for="(tab, el) in isDataTabs"
+          class="p-0"
+          v-for="(tab, el) in isSectionsData"
           :key="el"
           :title="tab.title"
           :active="tab.active"
@@ -46,7 +47,6 @@
             <template v-for="(item, i) in tab.info">
               <word-card
                 :key="i"
-                :textKey="isTextKey === i || isTextKey.length < 2"
                 :header="form.name"
                 :text="item.text"
               ></word-card>
@@ -59,7 +59,7 @@
 </template>
 
 <script>
-import info from '@/data'
+import { mapGetters, mapActions } from 'vuex'
 import WordCard from '@/components/WordCard.vue'
 
 export default {
@@ -67,11 +67,12 @@ export default {
   components: {
     WordCard,
   },
+  created() {
+    this.$store.dispatch('FETCH_SECTIONS')
+  },
   data() {
     return {
       tabIndex: 0,
-      arrItems: ['simple', 'accompanying', 'rare'],
-      info: info.sections,
       form: {
         name: '',
       },
@@ -79,21 +80,27 @@ export default {
     }
   },
   computed: {
-    isTextKey() {
-      const setList = this.info[this.arrItems[this.tabIndex]]
-      const lastKey = setList[setList.length - 1]
-      return setList.lastIndexOf(lastKey)
-    },
-    isDataTabs() {
-      const { simple, accompanying, rare } = this.info
-
-      const tabs = [
-        { info: simple, title: 'Simple questions', active: true },
-        { info: accompanying, title: 'Accompanying', active: false },
-        { info: rare, title: 'Rare questions', active: false },
+    ...mapGetters(['getSectionsList']),
+    isSectionsData() {
+      const list = this.getSectionsList
+      const { simple, accompanying, rare } = list
+      return [
+        {
+          info: simple,
+          title: 'Simple questions',
+          active: true,
+        },
+        {
+          info: accompanying,
+          title: 'Accompanying',
+          active: false,
+        },
+        {
+          info: rare,
+          title: 'Rare questions',
+          active: false,
+        },
       ]
-
-      return tabs
     },
   },
 

@@ -27,12 +27,12 @@
 
 <script>
 export default {
-  name: "WordClipboard",
+  name: 'WordClipboard',
   data() {
     return {
-      text: "",
+      text: '',
       isDblclick: false,
-    };
+    }
   },
   props: {
     hendler: {
@@ -44,37 +44,34 @@ export default {
     onCopy(e) {
       this.$bvToast.toast(e.text, {
         title: `Success текст добавлен в буфер обмена`,
-        variant: "success",
+        variant: 'success',
         solid: true,
         autoHideDelay: 3000,
         appendToast: false,
-      });
+      })
     },
     onError() {
       this.$bvToast.toast(
-        "Возникла непредвиденная ошибка, попробуйте еще раз",
+        'Возникла непредвиденная ошибка, попробуйте еще раз',
         {
           title: `Error текст не добавлен`,
-          variant: "danger",
+          variant: 'danger',
           solid: true,
         }
-      );
+      )
     },
   },
-};
+}
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss">
 .clipboard-wrapper {
-  // margin-bottom: 20px;
-
   .btn-clipboard {
-    bottom: 10px;
-    right: -10px;
+    line-height: 15px;
+    bottom: 20px;
+    right: 20px;
     position: absolute;
-
-    line-height: 1;
+    // line-height: 1;
     font-size: 12px;
   }
 }
