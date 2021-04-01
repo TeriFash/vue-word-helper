@@ -21,7 +21,7 @@
       ></b-icon>
     </b-button>
 
-    <slot> </slot>
+    <slot />
   </div>
 </template>
 
