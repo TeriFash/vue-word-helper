@@ -24,6 +24,8 @@ export default {
   width: 100%;
   position: relative;
 
+  // transition: all 0.5s ease;
+
   &.fixed {
     position: sticky;
     top: 0;
@@ -36,9 +38,11 @@ export default {
     }
   }
 }
-.nav-header {
+
+#navs .nav-header {
   // display: flex;
-  padding: 30px;
+  // transition: all 0.5s ease;
+  padding: 20px;
   z-index: 1;
   // background: rgb(239, 239, 239);
 

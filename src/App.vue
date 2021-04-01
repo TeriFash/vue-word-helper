@@ -27,9 +27,9 @@ export default {
   },
   mounted() {
     // записываем значение расположения табов (относительно начала экрана)
-    this.navsTop = this.$refs.navs.offsetTop
+    this.navsTop = this.$refs.navs.$el.offsetTop
 
-    console.log(' ---➜  m', this.navsTop)
+    console.log(' ---➜  m', this.$refs)
 
     // запускаем функцию проверки фиксации табов, на случай если скролл находится не в начале экрана
     this.setNavsFixed()
@@ -76,7 +76,7 @@ export default {
 }
 
 .view {
-  padding-top: 94px;
+  padding-top: 74px;
   background: rgb(230, 230, 230);
   width: 100%;
   min-height: 100vh;
