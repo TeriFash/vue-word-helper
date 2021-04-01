@@ -13,12 +13,7 @@
       v-clipboard:success="onCopy"
       v-clipboard:error="onError"
     >
-      Copy
-      <b-icon
-        class="ml-1"
-        icon="stickies-fill"
-        variant="outline-success"
-      ></b-icon>
+      <b-icon icon="stickies-fill" variant="outline-success"></b-icon>
     </b-button>
 
     <slot />
@@ -67,12 +62,18 @@ export default {
 <style lang="scss">
 .clipboard-wrapper {
   .btn-clipboard {
-    line-height: 15px;
+    // line-height: 25px;
     bottom: 20px;
+    display: inline-flex;
     right: 20px;
+    padding: 0.25rem;
     position: absolute;
     // line-height: 1;
     font-size: 12px;
+
+    svg {
+      margin: 0;
+    }
   }
 }
 

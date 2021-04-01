@@ -84,7 +84,7 @@ export default {
     //   background-color: rgba(255, 0, 251, 0.09);
     // }
 
-    background-color: rgba(40, 167, 70, 0.1);
+    background-color: rgb(192, 228, 199);
   }
 
   .paragraph {

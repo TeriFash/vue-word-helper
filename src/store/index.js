@@ -67,8 +67,8 @@ export default new Vuex.Store({
         const text = await window.navigator.clipboard.readText()
         const textCheck = text.split(' ')
 
-        if (textCheck.length <= 1) {
-          result = textCheck.join()
+        if (textCheck.length <= 2) {
+          result = textCheck[0]
         } else {
           result = !textCheck[0] ? textCheck[0] : textCheck[1]
         }
@@ -82,6 +82,8 @@ export default new Vuex.Store({
       if(payload) {
         commit('LOAD_CLIPBOARD_DATA', payload === true ? '' : payload)
       }
+
+      return result
     },
   },
   getters: {
