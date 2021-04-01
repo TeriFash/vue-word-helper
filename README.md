@@ -4,6 +4,23 @@
 
 🏃 Runs the Project setup <br />
 
+🗃️ Create in directory `./src` the file `config.js` <br />
+And insert firebase structure into it
+```js script
+  const firebaseConfig = {
+    apiKey: "",
+    authDomain: "",
+    projectId: "",
+    storageBucket: "",
+    messagingSenderId: "",
+    appId: ""
+  }
+
+  export {
+    firebaseConfig
+  }
+```
+
 > `yarn serve`
 
 🚚 Runs the app in the development mode. Compiles and hot-reloads <br />
