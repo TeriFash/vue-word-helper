@@ -27,7 +27,9 @@ export default {
   },
   mounted() {
     // записываем значение расположения табов (относительно начала экрана)
-    this.tabsTop = this.$refs.navs.offsetTop
+    this.navsTop = this.$refs.navs.offsetTop
+
+    console.log(' ---➜  ', this.navsTop)
 
     // запускаем функцию проверки фиксации табов, на случай если скролл находится не в начале экрана
     this.setNavsFixed()
