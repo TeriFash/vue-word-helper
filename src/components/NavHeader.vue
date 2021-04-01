@@ -1,5 +1,5 @@
 <template>
-  <div class="nav-header-wrapper" :class="{ fixed: navsFixed }" id="nav">
+  <div class="nav-header-wrapper" :class="{ fixed: fixed }">
     <div class="nav-header nav-header--overlay">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
@@ -10,7 +10,7 @@
 export default {
   name: 'NavHeader',
   props: {
-    navsFixed: Boolean,
+    fixed: Boolean,
   },
   data() {
     return {}

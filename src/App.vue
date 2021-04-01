@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <NavHeader :navs-fixed="navsFixed" ref="navs" />
+    <nav-header :fixed="navsFixed" ref="navs" id="navs" />
 
     <transition :name="transitionName">
       <router-view class="view"> </router-view>
@@ -29,7 +29,7 @@ export default {
     // записываем значение расположения табов (относительно начала экрана)
     this.navsTop = this.$refs.navs.offsetTop
 
-    console.log(' ---➜  ', this.navsTop)
+    console.log(' ---➜  m', this.navsTop)
 
     // запускаем функцию проверки фиксации табов, на случай если скролл находится не в начале экрана
     this.setNavsFixed()
@@ -50,7 +50,7 @@ export default {
           this.navsFixed = false
         }
       }
-      console.log(' ---➜  ', this.navsFixed, this.navsTop)
+      console.log(' ---➜ fn ', this.navsFixed, this.navsTop)
     },
   },
   watch: {
