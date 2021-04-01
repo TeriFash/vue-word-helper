@@ -1,9 +1,6 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+    <NavHeader :navs-fixed="navsFixed" ref="navs" />
 
     <transition :name="transitionName">
       <router-view class="view"> </router-view>
@@ -11,15 +8,48 @@
   </div>
 </template>
 <script>
+import NavHeader from '@/components/NavHeader'
+
 export default {
+  components: {
+    NavHeader,
+  },
   created() {
     this.$store.dispatch('FETCH_SECTIONS')
     this.$store.dispatch('SET_CLIPBOARD_DATA')
   },
   data() {
     return {
+      navsTop: 0,
+      navsFixed: false,
       transitionName: null,
     }
+  },
+  mounted() {
+    // записываем значение расположения табов (относительно начала экрана)
+    this.tabsTop = this.$refs.navs.offsetTop
+
+    // запускаем функцию проверки фиксации табов, на случай если скролл находится не в начале экрана
+    this.setNavsFixed()
+
+    // отслеживаем скролл
+    window.addEventListener('scroll', this.setNavsFixed)
+  },
+  beforeDestroy() {
+    // дропаем прослушивание ивента на скролл
+    window.removeEventListener('scroll', this.setNavsFixed)
+  },
+  methods: {
+    setNavsFixed() {
+      if (window.scrollY) {
+        if (window.scrollY >= this.navsTop) {
+          this.navsFixed = true
+        } else {
+          this.navsFixed = false
+        }
+      }
+      console.log(' ---➜  ', this.navsFixed, this.navsTop)
+    },
   },
   watch: {
     $route(to, from) {
@@ -43,27 +73,8 @@ export default {
   position: relative;
 }
 
-#nav {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  padding: 30px;
-  z-index: 10;
-  // background: rgb(239, 239, 239);
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: var(--teal);
-    }
-  }
-}
-
 .view {
-  padding-top: 64px;
+  padding-top: 94px;
   background: rgb(230, 230, 230);
   width: 100%;
   min-height: 100vh;

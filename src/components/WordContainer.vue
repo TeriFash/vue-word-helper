@@ -3,16 +3,15 @@
     <b-form class="form-main" @submit="onSubmit" @reset="onReset" v-if="show">
       <b-form-group
         id="input-group-1"
-        label="Name:"
+        label="Enter in this field the text that will be applied to all scripts."
         label-for="input-1"
-        description="Enter in this field the text that will be applied to all scripts."
       >
         <b-input-group>
           <b-form-input
             id="input-1"
             v-model="form.name"
             type="text"
-            placeholder="Enter word"
+            placeholder="Enter your text"
             required
           ></b-form-input>
 
@@ -134,6 +133,13 @@ export default {
 }
 
 .form-main {
+  .form-group {
+    label {
+      font-size: 0.7rem;
+      opacity: 0.5;
+    }
+  }
+
   .input-group {
     min-height: 48px;
 
@@ -155,6 +161,19 @@ export default {
 
     .input-group-append {
       z-index: 6;
+
+      .btn {
+        border: none;
+        // border-top-color: #ced4da;
+        // border-right-color: #ced4da;
+        // border-block-color: #ced4da;
+
+        &:focus {
+          outline: none;
+          box-shadow: none;
+          border: none;
+        }
+      }
     }
   }
 }
