@@ -14,6 +14,7 @@
 export default {
   created() {
     this.$store.dispatch('FETCH_SECTIONS')
+    this.$store.dispatch('SET_CLIPBOARD_DATA')
   },
   data() {
     return {

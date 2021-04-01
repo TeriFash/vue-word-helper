@@ -14,6 +14,9 @@ export default {
   components: {
     WordClipboard,
   },
+  data() {
+    return {}
+  },
   computed: {
     nameDownLine() {
       return this.textKey
@@ -57,20 +60,31 @@ export default {
   padding: 20px;
   transition: all 0.5s ease-in-out;
 
+  &:not(:last-child) {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
   &:nth-child(odd) {
-    background-color: rgba(0, 123, 255, 0.05);
+    background-color: #efefef;
   }
 
   &:first-child {
-    margin-top: 20px;
+    // margin-top: 20px;
+  }
+
+  &:last-child {
+  }
+
+  &:only-child {
+    border-color: transparent;
   }
 
   &:hover {
-    &:nth-child(odd) {
-      background-color: rgba(0, 123, 255, 0.09);
-    }
+    // &:nth-child(odd) {
+    //   background-color: rgba(255, 0, 251, 0.09);
+    // }
 
-    background-color: rgba(112, 112, 112, 0.09);
+    background-color: rgba(40, 167, 70, 0.1);
   }
 
   .paragraph {
@@ -78,7 +92,6 @@ export default {
   }
 
   &--hr {
-
     &:nth-child(odd) {
       border-top: 1px solid rgba(0, 0, 0, 0.1);
       border-bottom: 1px solid rgba(0, 0, 0, 0.1);

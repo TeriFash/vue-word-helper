@@ -30,7 +30,7 @@
       </b-form-group>
     </b-form>
 
-    <b-card class="mt-3 mb-3" no-body>
+    <b-card class="mt-3 mb-3 card-main" no-body>
       <b-tabs
         nav-wrapper-class="font-weight-bold text-success"
         card
@@ -47,7 +47,7 @@
             <template v-for="(item, i) in tab.info">
               <word-card
                 :key="i"
-                :header="form.name"
+                :header="form.name || isHeader"
                 :text="item.text"
               ></word-card>
             </template>
@@ -67,9 +67,6 @@ export default {
   components: {
     WordCard,
   },
-  created() {
-    this.$store.dispatch('FETCH_SECTIONS')
-  },
   data() {
     return {
       tabIndex: 0,
@@ -80,7 +77,10 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['getSectionsList']),
+    ...mapGetters(['getSectionsList', 'getClipboardData']),
+    isHeader() {
+      return this.getClipboardData || ''
+    },
     isSectionsData() {
       const list = this.getSectionsList
       const { simple = [], accompanying = [], rare = [] } = list
@@ -105,6 +105,7 @@ export default {
   },
 
   methods: {
+    ...mapActions(['SET_CLIPBOARD_DATA']),
     onSubmit(event) {
       event.preventDefault()
       alert(JSON.stringify(this.form))
@@ -113,6 +114,7 @@ export default {
       event.preventDefault()
       // Reset our form values
       this.form.name = ''
+      this.SET_CLIPBOARD_DATA(true)
       this.show = false
       this.$nextTick(() => {
         this.show = true
@@ -123,6 +125,14 @@ export default {
 </script>
 
 <style lang="scss">
+.card.card-main {
+  background-color: transparent;
+
+  & .card-header {
+    background: #fff;
+  }
+}
+
 .form-main {
   .input-group {
     min-height: 48px;
